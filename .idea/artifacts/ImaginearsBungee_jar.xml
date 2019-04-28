@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ImaginearsBungee:jar">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ImaginearsBungee.jar">
+      <element id="module-output" name="ImaginearsBungee" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/neovisionaries/nv-websocket-client/2.6/nv-websocket-client-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
