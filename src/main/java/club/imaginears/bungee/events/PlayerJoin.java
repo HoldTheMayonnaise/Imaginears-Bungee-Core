@@ -49,7 +49,7 @@ public class PlayerJoin implements Listener {
 
         }
     }
-
+ 
     @EventHandler
     public void onConnect(LoginEvent e) {
         if (MySQL.checkBanned(e.getConnection().getUniqueId().toString())) {
