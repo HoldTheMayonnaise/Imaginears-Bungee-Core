@@ -8,6 +8,12 @@ image: maven:3.3.9
 pipelines:
   default:
     - step:
+        name: Deploy to test
+        deployment: test   # can be test, staging or production.
+        # trigger: manual  # Uncomment to make this a manual deployment.
+        script:
+          - echo "Deploying to test environment"
+    - step:
         caches:
           - maven
         script: # Modify the commands below to build your repository.
