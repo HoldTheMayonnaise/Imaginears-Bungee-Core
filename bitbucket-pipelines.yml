@@ -25,4 +25,9 @@ pipelines:
               SERVER: '23.94.53.246'
               REMOTE_PATH: '/home/bungee/plugins'
               LOCAL_PATH: 'bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar'
-          - echo "Attempted to upload"
+          - echo "Uploaded to BungeeCord plugins!"
+    - step:
+        script:
+          - mvn -B clean install
+          - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar"
+          - echo "Uploaded to downloads!"
