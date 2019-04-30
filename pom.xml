@@ -21,9 +21,6 @@
         <defaultGoal>jar:jar</defaultGoal>
         <directory>bungee-core/target</directory>
         <finalName>${artifactId}-${version}</finalName>
-        <filters>
-            <filter>filters/filter1.properties</filter>
-        </filters>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
