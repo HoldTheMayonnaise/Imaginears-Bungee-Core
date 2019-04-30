@@ -35,7 +35,7 @@ public class PlayerJoin implements Listener {
                     Chat.sendMessage(all, "Staff", "&b" + p.getName() + " &ahas clocked in");
                 }
             }
-        } 
+        }
         if (MySQL.checkIfLastServerExists(p)) {
             String lastServer = MySQL.checkLastServer(p);
             Chat.sendMessage(p, "Servers", "You have been reconnected to your previous server: &b" + lastServer);
@@ -60,7 +60,7 @@ public class PlayerJoin implements Listener {
             }
             e.setCancelReason(new TextComponent(TextComponent.fromLegacyText(Chat.sendColorFree("\n&cPUNISHMENT &7» &aYou are currently banned from Imaginears Club!\n\n&cReason: &b" + ban.getReason() + "\n&cLength: &b" + length + "\n&cDate Banned: &b" + CalendarUtils.ConvertMilliSecondsToFormattedDate(ban.getTime()) + "\n\n&aTo appeal visit: https://imaginears.club/hub/appeal\n\n&cPunishment ID: &b" + ban.getPid()))));
             e.setCancelled(true);
-        }
+        } 
     }
 
     @EventHandler
