@@ -13,7 +13,7 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - mvn clean install
         artifacts:
-          - bungee-core/target/ImaginearsBungee.jar
+          - bungee-core/target/**
     - step:
         name: Uploading new file
         deployment: production   # can be test, staging or production.
@@ -24,5 +24,11 @@ pipelines:
               USER: 'root'
               SERVER: '23.94.53.246'
               REMOTE_PATH: '/home/bungee/plugins'
-              LOCAL_PATH: '/opt/atlassian/pipelines/agent/build/bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar'
-          - echo "Attempted to upload"
+              LOCAL_PATH: 'bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar'
+          - echo "Uploaded to BungeeCord plugins!"
+    - step:
+        name: Uploading to downloads tab
+        deployment: production
+        script:
+          - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar"
+          - echo "Uploaded to downloads!"
