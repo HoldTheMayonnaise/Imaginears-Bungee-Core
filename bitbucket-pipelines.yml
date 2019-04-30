@@ -14,7 +14,6 @@ pipelines:
           - mvn clean install
         artifacts:
           - bungee-core/target/**
-          - bungee-core/target/**-V${BITBUCKET_BUILD_NUMBER}.jar
     - step:
         name: Uploading new file
         deployment: production   # can be test, staging or production.
@@ -31,5 +30,5 @@ pipelines:
         name: Uploading to downloads tab
         deployment: production
         script:
-          - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies-V${BITBUCKET_BUILD_NUMBER}.jar"
+          - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads/V${BITBUCKET_BUILD_NUMBER}" --form files=@"bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar"
           - echo "Uploaded to downloads!"
