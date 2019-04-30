@@ -31,5 +31,5 @@ pipelines:
         - step:
             name: Uploading to downloads tab
             script:
-              - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads/V${BITBUCKET_BUILD_NUMBER}" --form files=@"bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar"
+              - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"bungee-core/target/bungee-1.0-SNAPSHOT-jar-with-dependencies.jar"
               - echo "Uploaded to downloads!"
