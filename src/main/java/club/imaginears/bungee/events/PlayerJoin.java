@@ -35,7 +35,7 @@ public class PlayerJoin implements Listener {
                     Chat.sendMessage(all, "Staff", "&b" + p.getName() + " &ahas clocked in");
                 }
             }
-        }
+        } 
         if (MySQL.checkIfLastServerExists(p)) {
             String lastServer = MySQL.checkLastServer(p);
             Chat.sendMessage(p, "Servers", "You have been reconnected to your previous server: &b" + lastServer);
