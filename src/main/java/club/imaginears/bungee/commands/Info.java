@@ -27,7 +27,7 @@ public class Info extends Command {
           }
 
           for (ProxiedPlayer all : Main.getInstance().getProxy().getPlayers()) {
-            TextComponent msg = new TextComponent(new TextComponent(Chat.sendColorFree("&bINFO &7» &a" + message)));
+            TextComponent msg = new TextComponent(new TextComponent(Chat.sendColorFree("&bINFO &7»&a" + message)));
             msg.setColor(ChatColor.GREEN);
             all.sendMessage(msg);
           }
