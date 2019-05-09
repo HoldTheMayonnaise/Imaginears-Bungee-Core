@@ -3,6 +3,7 @@ package club.imaginears.bungee;
 import club.imaginears.bungee.commands.*;
 import club.imaginears.bungee.events.PlayerJoin;
 import club.imaginears.bungee.utils.WebSocket;
+import me.lucko.luckperms.LuckPerms;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
