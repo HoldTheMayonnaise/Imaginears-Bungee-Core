@@ -27,19 +27,18 @@ public class ListCommand extends Command {
                 ArrayList<String> creativeList = new ArrayList<>();
 
                 for (ProxiedPlayer all : Main.getInstance().getProxy().getPlayers()) {
+                    String player = Permissions.getRankPrefix(all) + " &7" + all.getName();
                     if (all.getServer().getInfo().getName().equalsIgnoreCase("wdw")) {
-                        String player = Permissions.getRankPrefix(all) + " &7" + all.getName();
                         wdwList.add(player);
                     }
                     if (all.getServer().getInfo().getName().equalsIgnoreCase("creative")) {
-                        String player = Permissions.getRankPrefix(all) + " &7" + all.getName();
                         creativeList.add(player);
                     }
                 }
 
                 Chat.sendMessage(p, "Servers", "Online Players [&b" + Main.getInstance().getProxy().getPlayers().size() + "&a]:");
-                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lWDW &r&b[&a" + wdwList.size() + "&b]&r&a: " + String.join("&a, " + wdwList))));
-                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lCreative &r&b[&a" + creativeList.size() + "&b]&a: " + String.join("&a, " + creativeList))));
+                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lWDW &r&b[&a" + wdwList.size() + "&b]&r&a: " + String.join("&a, " + wdwList) + ")")));
+                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lCreative &r&b[&a" + creativeList.size() + "&b]&a: " + String.join("&a, " + creativeList) + ")")));
 
             }
         }
