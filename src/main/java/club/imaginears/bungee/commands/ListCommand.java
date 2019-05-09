@@ -27,11 +27,11 @@ public class ListCommand extends Command {
                 ArrayList<String> creativeList = new ArrayList<>();
 
                 for (ProxiedPlayer all : Main.getInstance().getProxy().getPlayers()) {
-                    if (all.getServer().getInfo().getName() == "wdw") {
+                    if (all.getServer().getInfo().getName().equalsIgnoreCase("wdw")) {
                         String player = Permissions.getRankPrefix(all) + " &7" + all.getName();
                         wdwList.add(player);
                     }
-                    if (all.getServer().getInfo().getName() == "creative") {
+                    if (all.getServer().getInfo().getName().equalsIgnoreCase("creative")) {
                         String player = Permissions.getRankPrefix(all) + " &7" + all.getName();
                         creativeList.add(player);
                     }
