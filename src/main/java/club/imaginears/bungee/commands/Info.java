@@ -11,32 +11,32 @@ import net.md_5.bungee.api.plugin.Command;
 
 public class Info extends Command {
 
-    public Info(String name) {
-        super(name);
-    }
+  public Info(String name) {
+    super(name);
+  }
 
-    @Override
-    public void execute(CommandSender sender, String[] args) {
-        if (sender instanceof ProxiedPlayer) {
-            ProxiedPlayer p = (ProxiedPlayer) sender;
-            if (Permissions.checkPermissionMsg(p, "core.info")) {
-                if (args.length > 0) {
-                    String message = "";
-                    for (int i=0;i < args.length; i++) {
-                        message = message + " " + args[i];
-                    }
+  @Override
+  public void execute(CommandSender sender, String[] args) {
+    if (sender instanceof ProxiedPlayer) {
+      ProxiedPlayer p = (ProxiedPlayer) sender;
+      if (Permissions.checkPermissionMsg(p, "core.info")) {
+        if (args.length > 0) {
+          String message = "";
+          for (int i=0;i < args.length; i++) {
+            message = message + " " + args[i];
+          }
 
-                    for (ProxiedPlayer all : Main.getInstance().getProxy().getPlayers()) {
-                        TextComponent msg = new TextComponent(new TextComponent(Chat.sendColorFree("&bINFO &7» &a" + message)));
-                        msg.setColor(ChatColor.GREEN);
-                        all.sendMessage(msg);
-                    }
-                } else {
-                    Chat.sendError(p, Chat.ChatErrors.ARGCOUNT, "/info (message)");
-                }
-            }
+          for (ProxiedPlayer all : Main.getInstance().getProxy().getPlayers()) {
+            TextComponent msg = new TextComponent(new TextComponent(Chat.sendColorFree("&bINFO &7» &a" + message)));
+            msg.setColor(ChatColor.GREEN);
+            all.sendMessage(msg);
+          }
+        } else {
+          Chat.sendError(p, Chat.ChatErrors.ARGCOUNT, "/info (message)");
         }
-
+      }
     }
+
+  }
 
 }

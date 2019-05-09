@@ -43,9 +43,13 @@ public class Main extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new SSCommand("socialspy"));
         getProxy().getPluginManager().registerCommand(this, new SCCommand("staffchat"));
         getProxy().getPluginManager().registerCommand(this, new SCCommand("ac"));
+        getProxy().getPluginManager().registerCommand(this, new ACCommand("lc"));
+        getProxy().getPluginManager().registerCommand(this, new ACCommand("leader"));
+        getProxy().getPluginManager().registerCommand(this, new ACCommand("leaderchat"));
         getProxy().getPluginManager().registerCommand(this, new StaffListCommand("stafflist"));
         getProxy().getPluginManager().registerCommand(this, new StaffListCommand("sl"));
-        getProxy().getPluginManager().registerCommand(this, new StaffListCommand("list"));
+        getProxy().getPluginManager().registerCommand(this, new ListCommand("list"));
+        getProxy().getPluginManager().registerCommand(this, new ListCommand("glist"));
         getProxy().getPluginManager().registerCommand(this, new JoinCommand("join"));
         getProxy().getPluginManager().registerCommand(this, new JoinCommand("server"));
         getProxy().getPluginManager().registerCommand(this, new Bungee("bungee"));
