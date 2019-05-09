@@ -37,8 +37,8 @@ public class ListCommand extends Command {
                 }
 
                 Chat.sendMessage(p, "Servers", "Online Players [&b" + Main.getInstance().getProxy().getPlayers().size() + "&a]:");
-                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lWDW &r&b[&a" + wdwList.size() + "&b]&r&a: " + String.join("&a, " + wdwList) + ")")));
-                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lCreative &r&b[&a" + creativeList.size() + "&b]&a: " + String.join("&a, " + creativeList) + ")")));
+                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lWDW &r&b[&a" + wdwList.size() + "&b]&r&a: " + String.join("&a, ", wdwList))));
+                p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&b&lCreative &r&b[&a" + creativeList.size() + "&b]&a: " + String.join("&a, ", creativeList))));
 
             }
         }
