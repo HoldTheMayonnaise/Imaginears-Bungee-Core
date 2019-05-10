@@ -39,7 +39,6 @@ public class ReplyCommand extends Command {
             }
 
             msg.deleteCharAt(msg.length()-1);
-            msg.append(".");
 
             target.sendMessage(Chat.sendColorFree("&b" + p.getName() + " &7to &aYou&7: " + msg));
             p.sendMessage(Chat.sendColorFree("&aYou &7to &b" + target.getName() + "&7: " + msg));
