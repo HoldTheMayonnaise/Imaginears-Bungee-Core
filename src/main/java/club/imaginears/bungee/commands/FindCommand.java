@@ -39,7 +39,7 @@ public class FindCommand extends Command {
                             sameIP.add(all.getName());
                         }
                     }
-                    if (sameIP.size() >= 0) {
+                    if (sameIP.size() > 0) {
                         p.sendMessage(TextComponent.fromLegacyText(Chat.sendColorFree("&aThere is also &b" + sameIP.size() + " &aother players on with the same IP address (&b" + target.getAddress().getHostString() + "&a): &b" + String.join("&a, &b", sameIP))));
                     }
                 } else {
