@@ -22,6 +22,15 @@ public class Permissions {
         }
     }
 
+    public static boolean checkPermissionMsgNoOverride(ProxiedPlayer p, String perm) {
+        if (p.hasPermission(perm)) {
+            return true;
+        } else {
+            Chat.sendError(p, Chat.ChatErrors.PERMS, null);
+            return false;
+        }
+    }
+
     public static String getRankPrefix(ProxiedPlayer p) {
         String group = LuckPerms.getApi().getUser(p.getUniqueId()).getPrimaryGroup();
         if (group.equalsIgnoreCase("default")) {

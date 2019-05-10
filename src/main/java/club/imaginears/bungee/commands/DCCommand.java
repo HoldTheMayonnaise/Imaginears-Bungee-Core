@@ -19,7 +19,7 @@ public class DCCommand extends Command {
     public void execute(CommandSender sender, String[] args) {
         if (sender instanceof ProxiedPlayer) {
             ProxiedPlayer p = (ProxiedPlayer) sender;
-            if (Permissions.checkPermissionMsg(p, "core.devchat")) {
+            if (Permissions.checkPermissionMsgNoOverride(p, "core.devchat")) {
                 if (args.length > 0) {
                     String message = "";
                     for (int i=0;i < args.length; i++) {
