@@ -46,6 +46,8 @@ public class Main extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new ACCommand("lc"));
         getProxy().getPluginManager().registerCommand(this, new ACCommand("leader"));
         getProxy().getPluginManager().registerCommand(this, new ACCommand("leaderchat"));
+        getProxy().getPluginManager().registerCommand(this, new DCCommand("dc"));
+        getProxy().getPluginManager().registerCommand(this, new DCCommand("devchat"));
         getProxy().getPluginManager().registerCommand(this, new StaffListCommand("stafflist"));
         getProxy().getPluginManager().registerCommand(this, new StaffListCommand("sl"));
         getProxy().getPluginManager().registerCommand(this, new ListCommand("list"));
@@ -60,6 +62,8 @@ public class Main extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new Apply("apply"));
         getProxy().getPluginManager().registerCommand(this, new Info("info"));
         getProxy().getPluginManager().registerCommand(this, new Info("alert"));
+        getProxy().getPluginManager().registerCommand(this, new FindCommand("find"));
+        getProxy().getPluginManager().registerCommand(this, new FindCommand("locate"));
         getProxy().getPluginManager().registerListener(this, new PlayerJoin());
     }
 
