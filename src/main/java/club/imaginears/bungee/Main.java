@@ -66,6 +66,7 @@ public class Main extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new FindCommand("locate"));
         getProxy().getPluginManager().registerCommand(this, new BugCommand("bug"));
         getProxy().getPluginManager().registerCommand(this, new BugCommand("bugreport"));
+        getProxy().getPluginManager().registerCommand(this, new RestartCommand("bungeerestart"));
         getProxy().getPluginManager().registerListener(this, new PlayerJoin());
     }
 
