@@ -3,10 +3,7 @@ package club.imaginears.bungee.events;
 import club.imaginears.bungee.Main;
 import club.imaginears.bungee.objects.Ban;
 import club.imaginears.bungee.objects.IPBan;
-import club.imaginears.bungee.utils.CalendarUtils;
-import club.imaginears.bungee.utils.Chat;
-import club.imaginears.bungee.utils.MySQL;
-import club.imaginears.bungee.utils.Permissions;
+import club.imaginears.bungee.utils.*;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -67,7 +64,9 @@ public class PlayerJoin implements Listener {
 
     @EventHandler
     public void loadBalance(ServerConnectEvent e) {
+        Console.Log("ServerConnectEvent running", Console.types.LOG);
         if (!(e.getTarget().canAccess(e.getPlayer()))) {
+            Console.Log("ServerConnectEvent running (can not access)", Console.types.LOG);
             Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getTarget().getName() + "&a, you have been redirected to &bcreative&a!");
             MySQL.manualSetLastServer("creative", e.getPlayer());
             e.setTarget(Main.getInstance().getProxy().getServerInfo("creative"));
