@@ -69,6 +69,7 @@ public class PlayerJoin implements Listener {
     public void loadBalance(ServerConnectEvent e) {
         if (e.isCancelled()) {
             Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getTarget().getName() + "&a, you have been redirected to &bcreative&a!");
+            MySQL.manualSetLastServer("creative", e.getPlayer());
             e.setTarget(Main.getInstance().getProxy().getServerInfo("creative"));
             e.setCancelled(false);
         }

@@ -218,6 +218,19 @@ public class MySQL {
         }
     }
 
+    public static void manualSetLastServer(String server, ProxiedPlayer p) {
+        try (Connection connection = getConnection()) {
+            PreparedStatement sql = connection.prepareStatement("UPDATE server.player_data SET last_server = ? WHERE uuid = ?");
+            sql.setString(1, server);
+            sql.setString(2, p.getUniqueId().toString());
+            sql.execute();
+            sql.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
     public static String checkLastServer(ProxiedPlayer p) {
         try (Connection connection = getConnection()) {
             PreparedStatement sql = connection.prepareStatement("SELECT * FROM server.player_data WHERE uuid=?");
