@@ -11,6 +11,7 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
+import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.*;
 import net.md_5.bungee.api.plugin.Listener;
@@ -50,6 +51,7 @@ public class PlayerJoin implements Listener {
         }
     }
 
+
     @EventHandler
     public void onConnect(LoginEvent e) {
         if (MySQL.checkBanned(e.getConnection().getUniqueId().toString())) {
@@ -64,7 +66,18 @@ public class PlayerJoin implements Listener {
     }
 
     @EventHandler
+    public void loadBalance(ServerConnectEvent e) {
+        if (e.isCancelled()) {
+            Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getTarget().getName() + "&a, you have been redirected to &bcreative&a!");
+            e.setTarget(Main.getInstance().getProxy().getServerInfo("creative"));
+            e.setCancelled(false);
+        }
+    }
+
+
+    @EventHandler
     public void onPreJoin(PreLoginEvent e) {
+        Connection conn = e.getConnection();
         String ip = e.getConnection().getAddress().getHostString();
         if (MySQL.checkIPBanned(ip)) {
             IPBan ban = MySQL.getIPBan(ip);
