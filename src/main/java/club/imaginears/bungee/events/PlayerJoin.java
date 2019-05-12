@@ -5,6 +5,7 @@ import club.imaginears.bungee.objects.Ban;
 import club.imaginears.bungee.objects.IPBan;
 import club.imaginears.bungee.utils.*;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.ServerConnectRequest;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -63,16 +64,44 @@ public class PlayerJoin implements Listener {
     }
 
     @EventHandler
-    public void loadBalance(ServerConnectEvent e) {
-        Console.Log("ServerConnectEvent running", Console.types.LOG);
-        if (!(e.getTarget().canAccess(e.getPlayer()))) {
-            Console.Log("ServerConnectEvent running (can not access)", Console.types.LOG);
-            Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getTarget().getName() + "&a, you have been redirected to &bcreative&a!");
-            MySQL.manualSetLastServer("creative", e.getPlayer());
-            e.setTarget(Main.getInstance().getProxy().getServerInfo("creative"));
-            e.setCancelled(false);
+    public void serverDis(ServerKickEvent e) {
+        if (e.getKickReason().contains("We are experiencing some pixie dust on")) {
+            if (e.getKickedFrom() == Main.getInstance().getProxy().getServerInfo("wdw")) {
+                if (MySQL.checkLastServer(e.getPlayer()).equalsIgnoreCase("creative")) {
+                    ProxyServer.getInstance().getScheduler().schedule(Main.getInstance(), new Runnable() {
+                        public void run() {
+                            Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getKickedFrom().getName() + "&a, WDW is currently only open to Passholders. Donate at &bhttp://imaginearsclub.buycraft.net");
+                        }
+                    }, 3, TimeUnit.SECONDS);
+                } else {
+                    e.setCancelled(true);
+                    //e.getPlayer().connect(Main.getInstance().getProxy().getServerInfo("creative"));
+                    MySQL.manualSetLastServer("creative", e.getPlayer());
+                }
+            }
+        }
+
+        if ( e.getKickReason().contains("Outdated client!")) {
+            if (e.getKickedFrom() == Main.getInstance().getProxy().getServerInfo("wdw")) {
+                if (MySQL.checkLastServer(e.getPlayer()).equalsIgnoreCase("creative")) {
+                    ProxyServer.getInstance().getScheduler().schedule(Main.getInstance(), new Runnable() {
+                        public void run() {
+                            Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getKickedFrom().getName() + "&a, WDW is currently running on 1.14!");
+                        }
+                    }, 3, TimeUnit.SECONDS);
+                } else {
+                    MySQL.manualSetLastServer("creative", e.getPlayer());
+                    //e.getPlayer().connect(Main.getInstance().getProxy().getServerInfo("creative"));
+                    ProxyServer.getInstance().getScheduler().schedule(Main.getInstance(), new Runnable() {
+                        public void run() {
+                            Chat.sendMessage(e.getPlayer(), "Servers", "Could not connect you to &b" + e.getKickedFrom().getName() + "&a, you have been redirected to &bcreative&a! (WDW is currently running on 1.14)");
+                        }
+                    }, 3, TimeUnit.SECONDS);
+                }
+            }
         }
     }
+
 
 
     @EventHandler

@@ -26,7 +26,7 @@ public class Permissions {
         if (p.hasPermission(perm)) {
             return true;
         } else {
-            Chat.sendError(p, Chat.ChatErrors.PERMS, null);
+            Chat.sendError(p, Chat.ChatErrors.PERMS, "");
             return false;
         }
     }
