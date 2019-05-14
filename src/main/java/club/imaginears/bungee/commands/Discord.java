@@ -20,7 +20,7 @@ public class Discord extends Command {
         if (sender instanceof ProxiedPlayer) {
             ProxiedPlayer p = (ProxiedPlayer) sender;
             if (args.length != 1) {
-                Chat.sendMessage(p, "Discord", "&aTo link your discord account please DM the bot -link and copy the code it gives, then run /discord (Code). The bot will message you to confirm. You can join the discord here: &bhttps://discord.gg/MqKCKu");
+                Chat.sendMessage(p, "Discord", "&aTo link your discord account please DM the bot -link and copy the code it gives, then run /discord (Code). The bot will message you to confirm. You can join the discord here: &bhttp://iears.us/discord");
             } else {
                 if (MySQL.checkDiscordCode(args[0])) {
                     DiscordUser duser = MySQL.getDiscordUser(args[0]);
