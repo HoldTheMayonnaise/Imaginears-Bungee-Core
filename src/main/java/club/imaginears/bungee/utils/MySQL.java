@@ -6,6 +6,7 @@ import club.imaginears.bungee.objects.IPBan;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.Random;
 
 public class MySQL {
@@ -223,6 +224,23 @@ public class MySQL {
             PreparedStatement sql = connection.prepareStatement("UPDATE server.player_data SET last_server = ? WHERE uuid = ?");
             sql.setString(1, server);
             sql.setString(2, p.getUniqueId().toString());
+            sql.execute();
+            sql.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    public static void logMessage(ProxiedPlayer player, String message, String server) {
+        try (Connection connection = getConnection()) {
+            PreparedStatement sql = connection.prepareStatement("INSERT INTO server.chat_log (uuid, username, message, server, time) VALUES (?, ?, ?, ?, ?)");
+            String time = new Date().toString();
+            sql.setString(1, player.getUniqueId().toString());
+            sql.setString(2, player.getName());
+            sql.setString(3, message);
+            sql.setString(4, server);
+            sql.setString(5, time);
             sql.execute();
             sql.close();
         } catch (SQLException e) {
