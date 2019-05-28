@@ -39,7 +39,7 @@ public class JoinCommand extends Command {
                 switch (server) {
                     case "wdw":
                         if (p.getServer().getInfo().getName().equalsIgnoreCase("wdw")) {
-                            Chat.sendMessage(p, "Servers", "&cYou're already connected to &bWDW");
+                            Chat.sendMessage(p, "Servers", "&cYou're already connected to &bWDW&c!");
                         } else {
                             p.connect(Main.getInstance().getProxy().getServerInfo("wdw"));
                             Chat.sendMessage(p, "Servers", "Sending you to &bWDW");
